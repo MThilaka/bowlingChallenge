@@ -1,0 +1,72 @@
+import java.util.Scanner;
+class bowling {
+        static int sum=0;
+        static boolean spare = false;
+        static boolean strike = false;
+    public static int bowlingInputs(){
+        for(int i=1;i<=10;i++){
+            int a; 
+            int b=0;
+            Scanner sc = new Scanner(System.in);
+            System.out.println("Enter 1st score of frame "+i+" : ");
+            a = sc.nextInt();
+            if(a==10){
+                sum=sum+10;
+            }else{
+                Scanner sc1 = new Scanner(System.in);
+                System.out.println("Enter 2nd score of frame "+i+" : ");
+            b = sc1.nextInt();
+            sum=sum+a+b;
+            }
+            SpareOrStrike(a,b);
+            CheckSpareOrStrike(a,b);
+    }
+    if(spare==true||strike==true){
+        Scanner sc3 = new Scanner(System.in);
+                System.out.println("Enter extra score : ");
+            int c = sc3.nextInt();
+            sum=sum+c;
+    }
+    /*if(strike==true){
+        Scanner sc3 = new Scanner(System.in);
+                System.out.println("Enter extra score");
+            int c = sc3.nextInt();
+            Scanner sc4 = new Scanner(System.in);
+                System.out.println("Enter one more extra score");
+            int d = sc4.nextInt();
+            sum=sum+c+d;
+    }
+    if(spare==true){
+        Scanner sc5 = new Scanner(System.in);
+                System.out.println("Enter extra score");
+            int e = sc5.nextInt();
+            sum=sum+e;
+    }*/
+    return sum;
+    }
+    public static int SpareOrStrike(int x,int y){
+        if(spare==true){
+                sum=sum+x;
+            }
+           else if(strike==true){
+            sum=sum+x+y;
+            }
+            return sum;
+    }
+    public static void CheckSpareOrStrike(int m,int n){
+        if(m==10){
+                strike =true;
+                spare =false;
+            }
+            else if((m+n)==10){
+                spare=true;
+                strike=false;
+            }else{
+                spare=false;
+                strike=false;
+            }
+    }
+    public static void main(String[] args) {
+        System.out.println("Total earned score is : "+bowlingInputs());
+    }
+}
